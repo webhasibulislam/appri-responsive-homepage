@@ -1,18 +1,18 @@
 (function ($) {
 	"use strict";
 
-	//data-background
-
-	$("[data-background]").each(function () {
-		$(this).css("background-image", "url(" + $(this).attr("data-background") + ")" );
-	});
-
-
 	// meanmenu
 	$('#mobile-menu').meanmenu({
 		meanMenuContainer: '.mobile-menu',
-		meanScreenWidth: "992"
+		meanScreenWidth: "991"
 	});
+
+	//data-background
+
+	$("[data-background]").each(function () {
+		$(this).css("background-image", "url(" + $(this).attr("data-background") + ")");
+	});
+
 
 	// One Page Nav
 	var top_offset = $('.header-area').height() - 10;
@@ -31,6 +31,25 @@
 		}
 	});
 
+
+	//testimonial
+	$('.testimonial-active').slick({
+		slidesToShow: 1,
+		slidesToScroll: 2,
+		arrows: false,
+		fade: true,
+		asNavFor: '.testimonial-image-active',
+	});
+	$('.testimonial-image-active').slick({
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		asNavFor: '.testimonial-active',
+		dots: false,
+		centerMode: true,
+		focusOnSelect: true,
+		centerPadding: '0px',
+		arrows: false,
+	});
 
 
 	// mainSlider
@@ -75,25 +94,25 @@
 
 
 	// owlCarousel
-	$('.owl-carousel').owlCarousel({
-		loop: true,
-		margin: 0,
-		items: 1,
-		navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-		nav: true,
-		dots: false,
-		responsive: {
-			0: {
-				items: 1
-			},
-			767: {
-				items: 3
-			},
-			992: {
-				items: 5
-			}
-		}
-	})
+	// $('.owl-carousel').owlCarousel({
+	// 	loop: true,
+	// 	margin: 0,
+	// 	items: 1,
+	// 	navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+	// 	nav: true,
+	// 	dots: false,
+	// 	responsive: {
+	// 		0: {
+	// 			items: 1
+	// 		},
+	// 		767: {
+	// 			items: 3
+	// 		},
+	// 		992: {
+	// 			items: 5
+	// 		}
+	// 	}
+	// })
 
 
 	/* magnificPopup img view */
@@ -147,9 +166,37 @@
 		animation: 'fade', // Fade, slide, none
 		animationInSpeed: 200, // Animation in speed (ms)
 		animationOutSpeed: 200, // Animation out speed (ms)
-		scrollText: '<i class="icofont icofont-long-arrow-up"></i>', // Text for element
+		scrollText: '<i class="fa fa-arrow-up"></i>', // Text for element
 		activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
 	});
+
+	//counter
+	$('.counter').counterUp({
+		delay: 10,
+		time: 1000
+	});
+
+
+	$('.brand-active').owlCarousel({
+		loop: true,
+		margin: 30,
+		nav: false,
+		autoplay: true,
+		responsive: {
+			0: {
+				items: 1
+			},
+			550: {
+				items: 2
+			},
+			767: {
+				items: 3
+			},
+			1000: {
+				items: 4
+			}
+		}
+	})
 
 	// WOW active
 	new WOW().init();
